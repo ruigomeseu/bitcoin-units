@@ -1,8 +1,8 @@
 {
   "name": "bitcoin-units",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Easily convert between BTC, mBTC and Satoshis.",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "test": "mocha --require babel-core/register --require babel-polyfill --recursive",
     "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
