@@ -6,10 +6,10 @@
 Convert between any bitcoin unit - BTC, mBTC, μBTC, satoshi and even your own custom units!
 
 ```js
-bitcoin(1,  'mBTC').to('BTC').value()
+bitcoin(1, 'mBTC').to('BTC').value()
 0.001
 
-bitcoin(100000,  'satoshi').to('BTC').format()
+bitcoin(100000, 'satoshi').to('BTC').format()
 '0.001 BTC'
 ```
 
