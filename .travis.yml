@@ -4,7 +4,8 @@ node_js:
   - '6'
 script:
   - npm run test
-  - npm run coveralls
+  - npm run cover
+  - codecov
   - npm run build
 branches:
   only:
