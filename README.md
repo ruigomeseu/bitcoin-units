@@ -1,7 +1,7 @@
 ![](https://ruigomes.me/bitcoin-units.png)
 
 # bitcoin-units
-[![Build Status](https://travis-ci.org/ruigomeseu/bitcoin-units.svg?branch=master)](https://travis-ci.org/ruigomeseu/bitcoin-units) [![Coverage Status](https://coveralls.io/repos/github/ruigomeseu/bitcoin-units/badge.svg?branch=master)](https://coveralls.io/github/ruigomeseu/bitcoin-units?branch=master)
+[![Build Status](https://img.shields.io/travis/ruigomeseu/bitcoin-units.svg)](https://travis-ci.org/ruigomeseu/bitcoin-units) [![codecov](https://img.shields.io/codecov/c/github/ruigomeseu/bitcoin-units.svg)](https://codecov.io/gh/ruigomeseu/bitcoin-units) [![npm version](https://badge.fury.io/js/bitcoin-units.svg)](https://badge.fury.io/js/bitcoin-units)
 
 Convert between any bitcoin unit - BTC, mBTC, μBTC, satoshi and even your own custom units!
 
