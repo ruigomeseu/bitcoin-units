@@ -136,4 +136,4 @@ https://ruigomes.me
 
 ## License
 
-The MIT License (MIT). Please see [LICENSE file](https://github.com/ruigomeseu/rss-feed-finder/blob/master/LICENSE.md) for more information.
+The MIT License (MIT). Please see [LICENSE file](https://github.com/ruigomeseu/bitcoin-units/blob/master/LICENSE.md) for more information.
