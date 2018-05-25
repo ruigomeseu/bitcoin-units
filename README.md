@@ -3,7 +3,7 @@
 # bitcoin-units
 [![Build Status](https://img.shields.io/travis/ruigomeseu/bitcoin-units.svg)](https://travis-ci.org/ruigomeseu/bitcoin-units) [![codecov](https://img.shields.io/codecov/c/github/ruigomeseu/bitcoin-units.svg)](https://codecov.io/gh/ruigomeseu/bitcoin-units) [![npm version](https://badge.fury.io/js/bitcoin-units.svg)](https://badge.fury.io/js/bitcoin-units)
 
-Convert between any bitcoin unit - BTC, mBTC, μBTC, satoshi and even your own custom units!
+Convert between any bitcoin unit - BTC, mBTC, μBTC, satoshi and even your own custom units! Available for ES6 and Node.js.
 
 ```js
 bitcoin(1, 'mBTC').to('BTC').value()
@@ -53,13 +53,13 @@ There are 4 available units by default:
 
 You can also use any of the following aliases:
 
-`btc`: `bitcoin` or `bitcoins`
+- `btc`: `bitcoin` or `bitcoins`
 
-`mbtc`: `millibtc`
+- `mbtc`: `millibtc`
 
-`bit`: `μbtc` or `microbtc`
+- `bit`: `μbtc` or `microbtc`
 
-`satoshi`: `sat`, `sats`, `satoshi`, `satoshis`
+- `satoshi`: `sat`, `sats`, `satoshi`, `satoshis`
 
 
 
