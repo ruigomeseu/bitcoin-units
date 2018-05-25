@@ -1,6 +1,6 @@
 {
   "name": "bitcoin-units",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Easily convert between BTC, mBTC and Satoshis.",
   "main": "./lib/index.js",
   "scripts": {
