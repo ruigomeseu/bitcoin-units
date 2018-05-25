@@ -1,7 +1,9 @@
 {
   "name": "bitcoin-units",
-  "version": "0.1.2",
-  "description": "Easily convert between BTC, mBTC and Satoshis.",
+  "version": "0.1.3",
+  "description": "Convert between BTC, mBTC, μBTC, satoshi and custom units.",
+  "homepage": "https://github.com/ruigomeseu/bitcoin-units",
+  "bugs": "https://github.com/ruigomeseu/bitcoin-units/issues",
   "main": "./lib/index.js",
   "scripts": {
     "test": "mocha --require babel-core/register --require babel-polyfill --recursive",
@@ -23,6 +25,10 @@
     "url": "https://ruigomes.me"
   },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruigomeseu/bitcoin-units"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.1",

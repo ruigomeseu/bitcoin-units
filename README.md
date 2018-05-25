@@ -128,3 +128,12 @@ bitcoin(1, 'satoshi').to('usd').value();
 
 0.00008
 ```
+
+## Author
+
+Rui Gomes  
+https://ruigomes.me  
+
+## License
+
+The MIT License (MIT). Please see [LICENSE file](https://github.com/ruigomeseu/rss-feed-finder/blob/master/LICENSE.md) for more information.
