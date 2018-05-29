@@ -1,6 +1,6 @@
 {
   "name": "bitcoin-units",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Convert between BTC, mBTC, μBTC, satoshi and custom units.",
   "homepage": "https://github.com/ruigomeseu/bitcoin-units",
   "bugs": "https://github.com/ruigomeseu/bitcoin-units/issues",

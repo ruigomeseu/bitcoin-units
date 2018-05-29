@@ -70,8 +70,8 @@ describe('Converting units', () => {
     );
   });
 
-  it('sets minimum fraction digits', () => {
-    bitcoin.setFiat('usd', 8000, { format: '${amount} USD', minimumFractionDigits: 2 });
+  it('sets fraction digits with trailing', () => {
+    bitcoin.setFiat('usd', 8000, { format: '${amount} USD', fractionDigits: 2, trailing: true});
 
     assert.deepEqual(
       bitcoin(1, 'btc').to('usd').format(),
@@ -79,8 +79,8 @@ describe('Converting units', () => {
     );
   });
 
-  it('sets maximum fraction digits', () => {
-    bitcoin.setFiat('usd', 1.2345678, { format: '${amount} USD', maximumFractionDigits: 2 });
+  it('sets fraction digits without trailing', () => {
+    bitcoin.setFiat('usd', 1.2345678, { format: '${amount} USD', fractionDigits: 2 });
 
     assert.deepEqual(
       bitcoin(1, 'btc').to('usd').format(),
