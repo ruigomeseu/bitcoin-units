@@ -26,13 +26,18 @@ class Bitcoin {
   format() {
     const displayUnit = units.getDisplay(this._unit);
 
-    let { unit } = displayUnit;
+    const { format } = displayUnit;
+    let { fractionDigits } = displayUnit;
+
+    fractionDigits = fractionDigits || 0;
+
+    let formatted = format.replace('{amount}', this._value.toLocaleString('en', { minimumFractionDigits: fractionDigits }));
 
     if (displayUnit.pluralize && this._value !== 1) {
-      unit += 's';
+      formatted += 's';
     }
 
-    return `${this._value} ${unit}`;
+    return formatted;
   }
 
   toString() {

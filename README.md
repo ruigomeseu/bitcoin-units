@@ -90,7 +90,7 @@ You can set your own custom units using the `bitcoin.setDisplay(unit, options)`:
 
 ```js
 bitcoin.setDisplay('satoshi', {
-  unit: 'custom'
+  format: '{amount} custom'
 });
 
 bitcoin(1, 'BTC').to('satoshi').format();

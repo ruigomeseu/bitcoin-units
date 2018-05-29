@@ -21,25 +21,25 @@ describe('Converting units', () => {
   it('formats units', () => {
     assert.deepEqual(
       bitcoin(1, 'BTC').to('mBTC').format(),
-      '1000 mBTC'
+      '1,000 mBTC'
     );
   });
 
   it('formats pluralizes units', () => {
     assert.deepEqual(
       bitcoin(1, 'BTC').to('satoshi').format(),
-      '100000000 satoshis'
+      '100,000,000 satoshis'
     );
   });
 
   it('shows custom displays', () => {
     bitcoin.setDisplay('satoshi', {
-      unit: 'melo'
+      format: '{amount} melo'
     });
 
     assert.deepEqual(
       bitcoin(1, 'BTC').to('satoshi').format(),
-      '100000000 melo'
+      '100,000,000 melo'
     );
   });
 
@@ -62,11 +62,11 @@ describe('Converting units', () => {
   });
 
   it('sets new fiat units with custom display', () => {
-    bitcoin.setFiat('usd', 8000, { unit: 'USD' });
+    bitcoin.setFiat('usd', 8000, { format: '${amount} USD', fractionDigits: 2 });
 
     assert.deepEqual(
-      bitcoin(1, 'satoshi').to('usd').format(),
-      '0.00008 USD'
+      bitcoin(1, 'btc').to('usd').format(),
+      '$8,000.00 USD'
     );
   });
 });

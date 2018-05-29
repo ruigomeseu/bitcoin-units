@@ -14,16 +14,16 @@ const aliases = {
 
 const display = {
   btc: {
-    unit: 'BTC'
+    format: '{amount} BTC',
   },
   mbtc: {
-    unit: 'mBTC'
+    format: '{amount} mBTC'
   },
   bit: {
-    unit: 'μBTC'
+    format: '{amount} μBTC'
   },
   satoshi: {
-    unit: 'satoshi',
+    format: '{amount} satoshi',
     pluralize: true
   },
 };
@@ -60,7 +60,7 @@ const getDisplay = unit => display[getUnitName(unit)];
 
 const setUnit = (unit, value, displayOptions = null) => {
   units[unit] = value;
-  display[unit] = displayOptions !== null ? displayOptions : { unit };
+  display[unit] = displayOptions !== null ? displayOptions : { format: `{amount} ${unit}` };
 };
 
 export { getUnit, setUnit, getDisplay, setDisplay };
