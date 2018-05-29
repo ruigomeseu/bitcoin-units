@@ -87,4 +87,22 @@ describe('Converting units', () => {
       '$1.23 USD'
     );
   });
+
+  it('sets fraction digits without trailing', () => {
+    bitcoin.setDisplay('btc', { format: '{amount} BTC', fractionDigits: 6 });
+
+    assert.deepEqual(
+      bitcoin(1398647, 'satoshis').to('btc').format(),
+      '0.013986 BTC'
+    );
+  });
+
+  it('sets fraction digits without trailing', () => {
+    bitcoin.setDisplay('btc', { format: '{amount} BTC', fractionDigits: 6 });
+
+    assert.deepEqual(
+      bitcoin(1390000, 'satoshis').to('btc').format(),
+      '0.0139 BTC'
+    );
+  });
 });

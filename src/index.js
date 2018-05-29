@@ -28,7 +28,7 @@ class Bitcoin {
 
     const { format, fractionDigits, trailing } = displayUnit;
 
-    let options = {};
+    let options = { maximumFractionDigits: fractionDigits };
 
     if(trailing) {
       options = { minimumFractionDigits: fractionDigits };
