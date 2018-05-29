@@ -95,7 +95,7 @@ bitcoin.setDisplay('satoshi', {
 
 bitcoin(1, 'BTC').to('satoshi').format();
 
-'100000000 custom'
+'100,000,000 custom'
 ```
 
 #### Custom Unit
