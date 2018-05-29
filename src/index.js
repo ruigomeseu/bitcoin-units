@@ -31,7 +31,7 @@ class Bitcoin {
 
     fractionDigits = fractionDigits || 0;
 
-    let formatted = format.replace('{amount}', this._value.toLocaleString('en', { minimumFractionDigits: fractionDigits }));
+    let formatted = format.replace('{amount}', this._value.toLocaleString('en', { maximumFractionDigits: fractionDigits }));
 
     if (displayUnit.pluralize && this._value !== 1) {
       formatted += 's';
