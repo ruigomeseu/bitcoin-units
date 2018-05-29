@@ -62,11 +62,29 @@ describe('Converting units', () => {
   });
 
   it('sets new fiat units with custom display', () => {
-    bitcoin.setFiat('usd', 8000, { format: '${amount} USD', fractionDigits: 2 });
+    bitcoin.setFiat('usd', 8000, { format: '${amount} USD' });
+
+    assert.deepEqual(
+      bitcoin(1, 'btc').to('usd').format(),
+      '$8,000 USD'
+    );
+  });
+
+  it('sets minimum fraction digits', () => {
+    bitcoin.setFiat('usd', 8000, { format: '${amount} USD', minimumFractionDigits: 2 });
 
     assert.deepEqual(
       bitcoin(1, 'btc').to('usd').format(),
       '$8,000.00 USD'
+    );
+  });
+
+  it('sets maximum fraction digits', () => {
+    bitcoin.setFiat('usd', 1.2345678, { format: '${amount} USD', maximumFractionDigits: 2 });
+
+    assert.deepEqual(
+      bitcoin(1, 'btc').to('usd').format(),
+      '$1.23 USD'
     );
   });
 });
