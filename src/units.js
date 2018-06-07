@@ -9,7 +9,7 @@ const aliases = {
   btc: ['bitcoin', 'bitcoins'],
   mbtc: ['millibtc'],
   bit: ['μbtc', 'microbtc'],
-  satoshi: ['sat', 'sats', 'satoshi', 'satoshis']
+  satoshi: ['sat', 'sats', 'satoshis']
 };
 
 const display = {

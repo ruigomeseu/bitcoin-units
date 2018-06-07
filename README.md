@@ -73,7 +73,7 @@ bitcoin(1, 'mBTC').to('BTC').value()
 
 `toString()` returns a `string`:
 ```js
-bitcoin(100000, 'satoshi').to('BTC').format()
+bitcoin(100000, 'satoshi').to('BTC').toString()
 '0.001'
 ```
 
@@ -85,17 +85,17 @@ bitcoin(100000, 'satoshi').to('BTC').format()
 
 ### Customization
 
-#### Format
-You can set your own custom units using the `bitcoin.setDisplay(unit, options)`:
+#### Custom Format
+You can set your own custom formats using the `bitcoin.setDisplay(unit, options)`:
 
 ```js
 bitcoin.setDisplay('satoshi', {
-  format: '{amount} custom'
+  format: '{amount} sats'
 });
 
 bitcoin(1, 'BTC').to('satoshi').format();
 
-'100,000,000 custom'
+'100,000,000 sats'
 ```
 
 #### Custom Unit

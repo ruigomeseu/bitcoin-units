@@ -30,11 +30,11 @@ class Bitcoin {
 
     let options = { maximumFractionDigits: fractionDigits };
 
-    if(trailing) {
+    if (trailing) {
       options = { minimumFractionDigits: fractionDigits };
     }
 
-    let value = this._value.toFixed(fractionDigits);
+    const value = this._value.toFixed(fractionDigits);
 
     let formatted = format.replace('{amount}', parseFloat(value).toLocaleString(undefined, options));
 
