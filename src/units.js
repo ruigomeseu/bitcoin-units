@@ -53,14 +53,14 @@ const getUnitName = (unitName) => {
 const getUnit = unit => units[getUnitName(unit)];
 
 const setDisplay = (unit, options) => {
-  display[unit] = options;
+  display[unit.toLowerCase()] = options;
 };
 
 const getDisplay = unit => display[getUnitName(unit)];
 
 const setUnit = (unit, value, displayOptions = null) => {
-  units[unit] = value;
-  display[unit] = displayOptions !== null ? displayOptions : { format: `{amount} ${unit}` };
+  units[unit.toLowerCase()] = value;
+  display[unit.toLowerCase()] = displayOptions !== null ? displayOptions : { format: `{amount} ${unit}` };
 };
 
 export { getUnit, setUnit, getDisplay, setDisplay };
