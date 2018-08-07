@@ -1,9 +1,10 @@
+import Big from 'big.js';
 import * as units from './units';
 
 const convert = (amount, from, to) => {
-  const amountInFromUnit = amount * units.getUnit(from);
+  const amountInFromUnit = Big(amount).times(units.getUnit(from));
 
-  return amountInFromUnit / units.getUnit(to);
+  return parseFloat(amountInFromUnit.div(units.getUnit(to)));
 };
 
 class Bitcoin {

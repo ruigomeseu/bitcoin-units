@@ -11,6 +11,15 @@ describe('Converting units', () => {
     );
   });
 
+  it('converts units with the right decimal places', () => {
+    const amount = 0.00225227;
+
+    assert.deepEqual(
+      bitcoin(225227, 'satoshi').to('btc').value(),
+      amount
+    );
+  });
+
   it('returns strings', () => {
     assert.deepEqual(
       bitcoin(1, 'mBTC').to('BTC').toString(),
