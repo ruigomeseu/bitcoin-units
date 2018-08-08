@@ -2,6 +2,10 @@ import Big from 'big.js';
 import * as units from './units';
 
 const convert = (amount, from, to) => {
+  if (Number.isNaN(parseFloat(amount)) || !Number.isFinite(amount)) {
+    return 0;
+  }
+
   const amountInFromUnit = Big(amount).times(units.getUnit(from));
 
   return parseFloat(amountInFromUnit.div(units.getUnit(to)));

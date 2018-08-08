@@ -20,6 +20,15 @@ describe('Converting units', () => {
     );
   });
 
+  it('handles incorrect units', () => {
+    const amount = 0;
+
+    assert.deepEqual(
+      bitcoin(undefined, 'satoshi').to('btc').value(),
+      amount
+    );
+  });
+
   it('returns strings', () => {
     assert.deepEqual(
       bitcoin(1, 'mBTC').to('BTC').toString(),
