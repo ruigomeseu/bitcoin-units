@@ -20,6 +20,17 @@ describe('Converting units', () => {
     );
   });
 
+  it('rounds down units with the right decimal places', () => {
+    bitcoin.setDisplay('btc', { format: '{amount} BTC', fractionDigits: 6 });
+
+    const amount = '0.002474 BTC';
+
+    assert.deepEqual(
+      bitcoin(247481, 'satoshi').to('btc').format(),
+      amount
+    );
+  });
+
   it('handles incorrect units', () => {
     const amount = 0;
 

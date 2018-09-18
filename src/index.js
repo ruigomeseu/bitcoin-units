@@ -39,7 +39,13 @@ class Bitcoin {
       options = { minimumFractionDigits: fractionDigits };
     }
 
-    const value = this._value.toFixed(fractionDigits);
+    let value;
+
+    if (fractionDigits !== undefined) {
+      value = Math.floor(this._value * (10 ** fractionDigits)) / (10 ** fractionDigits);
+    } else {
+      value = this._value;
+    }
 
     let formatted = format.replace('{amount}', parseFloat(value).toLocaleString(undefined, options));
 
