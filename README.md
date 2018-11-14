@@ -23,6 +23,8 @@ Or NPM:
 npm install bitcoin-units --save
 ```
 
+#### Try it out: [Demo](https://ruigomeseu.github.io/bitcoin-units/)
+
 ## Usage
 
 ### Importing
