@@ -1,5 +1,4 @@
 {
-  "parser": "babel-eslint",
   "extends": "airbnb",
   "env": {
     "mocha": true
@@ -11,6 +10,7 @@
         "allowAfterThis": true
       }
     ],
+    "no-template-curly-in-string": 0,
     "comma-dangle": [
       "error",
       "only-multiline"

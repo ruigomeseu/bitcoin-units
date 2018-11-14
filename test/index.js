@@ -1,5 +1,5 @@
-import { assert } from 'chai';
-import bitcoin from '../src/index';
+const { assert } = require('chai');
+const bitcoin = require('../lib/bitcoin.cjs.js');
 
 describe('Converting units', () => {
   it('converts units', () => {
@@ -16,6 +16,15 @@ describe('Converting units', () => {
 
     assert.deepEqual(
       bitcoin(225227, 'satoshi').to('btc').value(),
+      amount
+    );
+  });
+
+  it('converts units with the right decimal places', () => {
+    const amount = '0.00000012 BTC';
+
+    assert.deepEqual(
+      bitcoin(12, 'satoshi').to('btc').format(),
       amount
     );
   });
@@ -100,7 +109,7 @@ describe('Converting units', () => {
   });
 
   it('sets fraction digits with trailing', () => {
-    bitcoin.setFiat('usd', 8000, { format: '${amount} USD', fractionDigits: 2, trailing: true});
+    bitcoin.setFiat('usd', 8000, { format: '${amount} USD', fractionDigits: 2, trailing: true });
 
     assert.deepEqual(
       bitcoin(1, 'btc').to('usd').format(),

@@ -15,16 +15,20 @@ const aliases = {
 const display = {
   btc: {
     format: '{amount} BTC',
+    fractionDigits: 8
   },
   mbtc: {
-    format: '{amount} mBTC'
+    format: '{amount} mBTC',
+    fractionDigits: 5
   },
   bit: {
-    format: '{amount} μBTC'
+    format: '{amount} μBTC',
+    fractionDigits: 2
   },
   satoshi: {
     format: '{amount} satoshi',
-    pluralize: true
+    pluralize: true,
+    fractionDigits: 0
   },
 };
 
@@ -63,4 +67,6 @@ const setUnit = (unit, value, displayOptions = null) => {
   display[unit.toLowerCase()] = displayOptions !== null ? displayOptions : { format: `{amount} ${unit}` };
 };
 
-export { getUnit, setUnit, getDisplay, setDisplay };
+export {
+  getUnit, setUnit, getDisplay, setDisplay
+};

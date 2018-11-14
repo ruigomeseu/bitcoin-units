@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convert bitcoin units - Satoshis, bits, mBTC, BTC</title>
+  <meta name="description" content="Easily convert between various bitcoin units - satoshis to btc, satoshis to bits, bits to btc, and more!">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@0.7.2/dist/tailwind.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.0.0/dist/fetch.umd.js"></script>
+
+  <script src="../lib/bitcoin.umd.js"></script>
+</head>
+
+<body class="bg-grey-lightest text-grey-darkest">
+  <div class="h-1 bg-grey-darkest w-full"></div>
+  <div class="fixed flex pin-r pin-t pr-8 pt-6">
+    <a class="block flex items-center mr-4" href="https://twitter.com/ruigomeseu" style="color: #00aced">
+      <svg class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <title>Twitter</title>
+        <path d="M6.29 18.25c7.55 0 11.67-6.25 11.67-11.67v-.53c.8-.59 1.49-1.3 2.04-2.13-.75.33-1.54.55-2.36.65a4.12 4.12 0 0 0 1.8-2.27c-.8.48-1.68.81-2.6 1a4.1 4.1 0 0 0-7 3.74 11.65 11.65 0 0 1-8.45-4.3 4.1 4.1 0 0 0 1.27 5.49C2.01 8.2 1.37 8.03.8 7.7v.05a4.1 4.1 0 0 0 3.3 4.03 4.1 4.1 0 0 1-1.86.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 0 16.4a11.62 11.62 0 0 0 6.29 1.84"></path>
+      </svg>
+    </a>
+    <a href="https://github.com/ruigomeseu/bitcoin-units" class="block flex items-center text-black">
+      <svg class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <title>GitHub</title>
+        <path d="M10 0a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69a3.6 3.6 0 0 1 .1-2.64s.84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.4.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85l-.01 2.75c0 .26.18.58.69.48A10 10 0 0 0 10 0"></path>
+      </svg>
+    </a>
+  </div>
+  <div class="flex flex-col items-center justify-center mt-16">
+    <div class="">
+      <h1 class="text-2xl uppercase tracking-wide text-grey-darker">Convert bitcoin units</h1>
+    </div>
+    <div id="app" class="mt-12 w-full max-w-sm">
+      <div class="flex flex-wrap -mx-3">
+        <div class="w-full px-3">
+          <label class="block uppercase tracking-wide text-grey-dark text-xs font-bold mb-2">
+            Amount
+          </label>
+          <input
+            class="appearance-none shadow block w-full bg-grey-lighter text-grey-darkest border border-grey-lighter rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+            type="number"
+            v-model.number="number"
+            placeholder="0"
+          >
+        </div>
+      </div>
+      <div class="mt-8 flex flex-wrap -mx-2 mb-2">
+        <div class="w-full md:w-1/2 px-2 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-grey-dark text-xs font-bold mb-2" for="grid-state">
+            From
+          </label>
+          <div class="relative">
+            <select
+              v-model="from"
+              class="block appearance-none shadow w-full bg-grey-lighter border border-grey-lighter text-grey-darkest py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+            >
+              <option value="satoshi">satoshis</option>
+              <option value="bit">bits/μBTC</option>
+              <option value="mbtc">mBTC</option>
+              <option value="btc">BTC</option>
+              <option value="usd">USD</option>
+              <option value="eur">EUR</option>
+            </select>
+            <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 px-2 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-grey-dark text-xs font-bold mb-2">
+            To
+          </label>
+          <div class="relative">
+            <select
+              v-model="to"
+              class="block appearance-none shadow w-full bg-grey-lighter border border-grey-lighter text-grey-darkest py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+            >
+              <option value="satoshi">Satoshis</option>
+              <option value="bit">Bits</option>
+              <option value="mbtc">mBTC</option>
+              <option value="btc">BTC</option>
+              <option value="usd">USD</option>
+              <option value="eur">EUR</option>
+            </select>
+            <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8">
+        <p class="uppercase tracking-wide text-grey-dark text-xs font-bold mb-2">Formatted value</p>
+        <div class="text-lg font-medium">
+          {{ format }}
+        </div>
+      </div>
+      <div class="mt-8">
+        <p class="uppercase tracking-wide text-grey-dark text-xs font-bold mb-2">Raw value</p>
+        <div class="text-lg font-medium">
+          {{ value }}
+        </div>
+      </div>
+      <div class="mt-8">
+        <p class="uppercase tracking-wide text-xs text-grey-dark font-bold mb-2">Code</p>
+        <div>
+          <pre><code style="user-select: all;">bitcoin(<span class="text-orange-dark">{{ number ? number : 0 }}</span>, <span class="text-green">'{{ from }}'</span>).to(<span class="text-green">'{{ to }}'</span>)</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  Number.prototype.countDecimals = function () {
+    if (Math.floor(this.valueOf()) === this.valueOf()) return 0;
+    return this.toString().split(".")[1].length || 0;
+  }
+
+  var app = new Vue({
+    el: '#app',
+
+    data: {
+      number: null,
+      from: 'satoshi',
+      to: 'btc'
+    },
+
+    methods: {
+      convertExponentialToDecimal(number) {
+        const str = number.toString();
+        if(str.indexOf('e') !== -1) {
+          let exponent = parseInt(str.split('-')[1], 10);
+          exponent += parseFloat(str.split('-')[0]).countDecimals();
+          const result = number.toFixed(exponent);
+          return result;
+        } else {
+          return number;
+        }
+      }
+    },
+
+    computed: {
+      converted() {
+        return bitcoin(this.number, this.from).to(this.to)
+      },
+
+      format() {
+        return this.converted.format();
+      },
+
+      value() {
+        return this.convertExponentialToDecimal(this.converted.value());
+      }
+    },
+
+    mounted() {
+      fetch('https://blockchain.info/ticker')
+      .then(response => {
+        return response.json()
+      })
+      .then(rates => {
+        bitcoin.setFiat('usd', rates['USD'].last, {
+          format: '${amount}',
+          fractionDigits: 2,
+          trailing: true
+        });
+
+        bitcoin.setFiat('eur', rates['EUR'].last, {
+          format: '{amount} €',
+          fractionDigits: 2,
+          trailing: true
+        });
+      })
+    }
+  })
+</script>
+</html>

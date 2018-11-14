@@ -42,7 +42,8 @@ class Bitcoin {
     let value;
 
     if (fractionDigits !== undefined) {
-      value = Math.floor(this._value * (10 ** fractionDigits)) / (10 ** fractionDigits);
+      const fractionPower = Big(10).pow(fractionDigits);
+      value = parseFloat(Big(Math.floor(Big(this._value).times(fractionPower))).div(fractionPower));
     } else {
       value = this._value;
     }
@@ -66,6 +67,7 @@ const bitcoin = (value, unit) => new Bitcoin(value, unit);
 bitcoin.convert = convert;
 bitcoin.setDisplay = units.setDisplay;
 bitcoin.setUnit = units.setUnit;
+bitcoin.getUnit = units.getUnit;
 bitcoin.setFiat = (currency, rate, display = null) => {
   units.setUnit(currency, 1 / rate, display);
 };
