@@ -13,6 +13,8 @@ bitcoin(100000, 'satoshi').to('BTC').format()
 '0.001 BTC'
 ```
 
+👉 [Try the demo](https://ruigomeseu.github.io/bitcoin-units/)
+
 ## Installation
 Add `bitcoin-units` to your Javascript project dependencies using Yarn:
 ```bash
@@ -22,8 +24,6 @@ Or NPM:
 ```bash
 npm install bitcoin-units --save
 ```
-
-#### Try it out: [Demo](https://ruigomeseu.github.io/bitcoin-units/)
 
 ## Usage
 
