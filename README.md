@@ -1,7 +1,12 @@
 ![](https://ruigomes.me/bitcoin-units.png?v=2)
 
 # bitcoin-units
-[![Build Status](https://img.shields.io/travis/ruigomeseu/bitcoin-units.svg)](https://travis-ci.org/ruigomeseu/bitcoin-units) [![codecov](https://img.shields.io/codecov/c/github/ruigomeseu/bitcoin-units.svg)](https://codecov.io/gh/ruigomeseu/bitcoin-units) [![npm version](https://badge.fury.io/js/bitcoin-units.svg)](https://badge.fury.io/js/bitcoin-units)
+[![Build Status](https://img.shields.io/travis/ruigomeseu/bitcoin-units.svg)](https://travis-ci.org/ruigomeseu/bitcoin-units)
+[![codecov](https://img.shields.io/codecov/c/github/ruigomeseu/bitcoin-units.svg)](https://codecov.io/gh/ruigomeseu/bitcoin-units)
+[![npm version](https://badge.fury.io/js/bitcoin-units.svg)](https://badge.fury.io/js/bitcoin-units)
+[![David](https://img.shields.io/david/ruigomeseu/bitcoin-units.svg)](https://www.npmjs.com/package/bitcoin-units)
+[![npm](https://img.shields.io/npm/dt/bitcoin-units.svg)](https://www.npmjs.com/package/bitcoin-units)
+[![Twitter Follow](https://img.shields.io/twitter/follow/ruigomeseu.svg?style=social)](https://twitter.com/ruigomeseu)
 
 Convert between any bitcoin unit - BTC, mBTC, μBTC, satoshi and even your own custom units! Available for ES6 and Node.js.
 
