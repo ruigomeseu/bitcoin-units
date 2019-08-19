@@ -6,7 +6,7 @@
 [![npm version](https://badge.fury.io/js/bitcoin-units.svg)](https://badge.fury.io/js/bitcoin-units)
 [![David](https://img.shields.io/david/ruigomeseu/bitcoin-units.svg)](https://www.npmjs.com/package/bitcoin-units)
 [![npm](https://img.shields.io/npm/dt/bitcoin-units.svg)](https://www.npmjs.com/package/bitcoin-units)
-[![Twitter Follow](https://img.shields.io/twitter/follow/ruigomeseu.svg?style=social)](https://twitter.com/ruigomeseu)
+[![Twitter Follow](https://img.shields.io/twitter/follow/8bitgomes.svg?style=social)](https://twitter.com/8bitgomes)
 
 Convert between any bitcoin unit - BTC, mBTC, μBTC, satoshi and even your own custom units! Available for ES6 and Node.js.
 
