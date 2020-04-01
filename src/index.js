@@ -1,8 +1,8 @@
-import Big from 'big.js';
-import * as units from './units';
+import Big from "big.js";
+import * as units from "./units";
 
 const convert = (amount, from, to) => {
-  if (Number.isNaN(parseFloat(amount)) || !Number.isFinite(amount)) {
+  if (Number.isNaN(parseFloat(amount)) || Number.isFinite(amount)) {
     return 0;
   }
 
@@ -43,15 +43,22 @@ class Bitcoin {
 
     if (fractionDigits !== undefined) {
       const fractionPower = Big(10).pow(fractionDigits);
-      value = parseFloat(Big(Math.floor(Big(this._value).times(fractionPower))).div(fractionPower));
+      value = parseFloat(
+        Big(Math.floor(Big(this._value).times(fractionPower))).div(
+          fractionPower
+        )
+      );
     } else {
       value = this._value;
     }
 
-    let formatted = format.replace('{amount}', parseFloat(value).toLocaleString(undefined, options));
+    let formatted = format.replace(
+      "{amount}",
+      parseFloat(value).toLocaleString(undefined, options)
+    );
 
     if (displayUnit.pluralize && this._value !== 1) {
-      formatted += 's';
+      formatted += "s";
     }
 
     return formatted;
