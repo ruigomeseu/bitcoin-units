@@ -20,7 +20,7 @@
     />
     <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.6/dist/vue-multiselect.min.css" />
 
-    <script src="https://cdn.jsdelivr.net/npm/bitcoin-units@0.3.0/lib/bitcoin.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bitcoin-units/lib/bitcoin.umd.min.js"></script>
 
     <script>
       tailwind.config = {
@@ -154,16 +154,16 @@
           </div>
           <div class="mb-4">
             <p class="block uppercase tracking-wide text-zinc-500 text-xs font-medium mb-2">Formatted value</p>
-            <div class="text-white font-bold text-lg leading-tight">{{ format }}</div>
+            <div class="text-white font-bold text-lg leading-tight">{{ toBitcoinUnit.format() }}</div>
           </div>
           <div class="mb-4">
             <p class="block uppercase tracking-wide text-zinc-500 text-xs font-medium mb-2">Raw value</p>
-            <div class="text-white font-bold text-lg leading-tight">{{ to }}</div>
+            <div class="text-white font-bold text-lg leading-tight">{{ toBitcoinUnit.getValue() }}</div>
           </div>
           <div class="mb-4">
             <p class="block uppercase tracking-wide text-zinc-500 text-xs font-medium mb-2">Code</p>
             <div>
-              <pre><code class="font-fira" style="user-select: all;"><span style="color: #72ABEE">bitcoin</span><span style="color: #6CB2C0">(</span><span style="color: #C89B66">{{ from ? from : 0 }}</span><span style="color: #AAB1BE">,</span> <span style="color: #9EC077">'{{ fromUnit }}'</span><span style="color: #6CB2C0">)</span><span style="color: #AAB1BE">.</span><span style="color: #72ABEE">to</span><span style="color: #6CB2C0">(</span><span style="color: #9EC077">'{{ toUnit }}'</span><span style="color: #6CB2C0">)</span><span style="color: #AAB1BE">;</span></code></pre>
+              <pre><code class="font-fira" style="user-select: all;"><span style="color: #BC7BDD">new</span> <span style="color: #72ABEE">BitcoinUnit</span><span style="color: #6CB2C0">(</span><span style="color: #C89B66">{{ from ? from : 0 }}</span><span style="color: #AAB1BE">,</span> <span style="color: #9EC077">'{{ fromUnit }}'</span><span style="color: #6CB2C0">)</span><span style="color: #AAB1BE">.</span><span style="color: #72ABEE">to</span><span style="color: #6CB2C0">(</span><span style="color: #9EC077">'{{ toUnit }}'</span><span style="color: #6CB2C0">)</span><span style="color: #AAB1BE">;</span></code></pre>
             </div>
           </div>
         </div>
@@ -211,16 +211,22 @@
       },
 
       computed: {
-        converted() {
-          return new BitcoinUnit(this.from, this.fromUnit).to(this.toUnit);
-        },
-
-        format() {
-          return this.converted.format();
+        toBitcoinUnit() {
+          return new BitcoinUnit(this.to, this.toUnit);
         },
 
         currencies() {
           return ['BTC', 'sats', 'bit', 'mbtc', 'USD', 'EUR', 'GBP', 'CAD'];
+        },
+      },
+
+      watch: {
+        fromUnit() {
+          this.update('from', this.from);
+        },
+
+        toUnit() {
+          this.update('from', this.from);
         },
       },
 
