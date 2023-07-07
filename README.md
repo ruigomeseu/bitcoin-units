@@ -10,12 +10,12 @@
 
 Convert between any bitcoin unit - BTC, mBTC, μBTC, satoshi and even your own custom units.
 
-```js
+```ts
 new BitcoinUnit(10000, 'sats').to('BTC').getValue();
-0.001;
+// 0.001;
 
 new BitcoinUnit(21000, 'sats').to('BTC').format();
-('0.00021000 BTC');
+// '0.00021000 BTC';
 ```
 
 👉 [Try the demo](https://bitcoinunits.app)
@@ -56,7 +56,7 @@ Basic unit conversions are done using the `to(unit)` function:
 
 ```js
 new BitcoinUnit(1, 'mBTC').to('BTC').getValue();
-0.001;
+// 0.001;
 ```
 
 #### Available units
@@ -80,21 +80,21 @@ You can also use any of the following aliases:
 
 ```js
 new BitcoinUnit(1, 'mBTC').to('BTC').value();
-0.001;
+// 0.001;
 ```
 
 `toString()` returns a `string`:
 
 ```js
 new BitcoinUnit(100000, 'satoshi').to('BTC').toString();
-('0.001');
+// '0.001';
 ```
 
 `format()` returns a string with the value and unit:
 
 ```js
 new BitcoinUnit(100000, 'satoshi').to('BTC').format();
-('0.00100000 BTC');
+// '0.00100000 BTC';
 ```
 
 ### Customization
@@ -110,7 +110,7 @@ BitcoinUnit.setDisplay('sats', {
 
 new BitcoinUnit(1, 'BTC').to('satoshi').format();
 
-('100,000,000 something');
+// '100,000,000 something';
 ```
 
 #### Custom Unit
@@ -122,7 +122,7 @@ BitcoinUnit.setUnit('custom', 1 / 1e2);
 
 new BitcoinUnit(1, 'btc').to('custom').value();
 
-100;
+// 100;
 ```
 
 You can use this to create your own conversion to fiat currencies:
@@ -134,7 +134,7 @@ BitcoinUnit.setUnit('usd', 1 / 8000);
 
 new BitcoinUnit(1, 'satoshi').to('usd').value();
 
-0.00008;
+// 0.00008;
 ```
 
 There's a shorthand to this function named `bitcoin.setFiat(unit, rate)`:
@@ -144,7 +144,7 @@ BitcoinUnit.setFiat('usd', 8000);
 
 new BitcoinUnit(1, 'satoshi').to('usd').value();
 
-0.00008;
+// 0.00008;
 ```
 
 ## Author
