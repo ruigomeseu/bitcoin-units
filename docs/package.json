@@ -13,6 +13,7 @@
     "deploy": "node scripts/deploy-gh-pages.js"
   },
   "dependencies": {
+    "bitcoin-units": "^1.0.0",
     "vue": "^3.3.4",
     "vue-multiselect": "^3.0.0-beta.2"
   },
