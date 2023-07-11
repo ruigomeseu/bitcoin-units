@@ -1,19 +1,10 @@
 {
-  "extends": "airbnb",
-  "env": {
-    "mocha": true
-  },
-  "rules": {
-    "no-underscore-dangle": [
-      "error",
-      {
-        "allowAfterThis": true
-      }
-    ],
-    "no-template-curly-in-string": 0,
-    "comma-dangle": [
-      "error",
-      "only-multiline"
-    ]
-  }
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ]
 }

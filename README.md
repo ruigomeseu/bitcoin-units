@@ -1,31 +1,35 @@
 ![](https://ruigomes.me/bitcoin-units.png?v=2)
 
 # bitcoin-units
+
 [![Build Status](https://img.shields.io/travis/ruigomeseu/bitcoin-units.svg)](https://travis-ci.org/ruigomeseu/bitcoin-units)
 [![codecov](https://img.shields.io/codecov/c/github/ruigomeseu/bitcoin-units.svg)](https://codecov.io/gh/ruigomeseu/bitcoin-units)
 [![npm version](https://badge.fury.io/js/bitcoin-units.svg)](https://badge.fury.io/js/bitcoin-units)
-[![David](https://img.shields.io/david/ruigomeseu/bitcoin-units.svg)](https://www.npmjs.com/package/bitcoin-units)
 [![npm](https://img.shields.io/npm/dt/bitcoin-units.svg)](https://www.npmjs.com/package/bitcoin-units)
 [![Twitter Follow](https://img.shields.io/twitter/follow/8bitgomes.svg?style=social)](https://twitter.com/8bitgomes)
 
-Convert between any bitcoin unit - BTC, mBTC, μBTC, satoshi and even your own custom units! Available for ES6 and Node.js.
+Convert between any bitcoin unit - BTC, mBTC, μBTC, satoshi and even your own custom units.
 
-```js
-bitcoin(1, 'mBTC').to('BTC').value()
-0.001
+```ts
+new BitcoinUnit(10000, 'sats').to('BTC').getValue();
+// 0.001;
 
-bitcoin(100000, 'satoshi').to('BTC').format()
-'0.001 BTC'
+new BitcoinUnit(21000, 'sats').to('BTC').format();
+// '0.00021000 BTC';
 ```
 
-👉 [Try the demo](https://ruigomeseu.github.io/bitcoin-units/)
+👉 [Try the demo](https://bitcoinunits.app)
 
 ## Installation
+
 Add `bitcoin-units` to your Javascript project dependencies using Yarn:
+
 ```bash
 yarn add bitcoin-units
 ```
+
 Or NPM:
+
 ```bash
 npm install bitcoin-units --save
 ```
@@ -33,24 +37,26 @@ npm install bitcoin-units --save
 ## Usage
 
 ### Importing
-Import using ES6:
+
+Import using ESM:
 
 ```js
-import bitcoin from 'bitcoin-units';
+import BitcoinUnit from 'bitcoin-units';
 ```
 
-Or AMD:
+Or CJS:
 
 ```js
-var bitcoin = require('bitcoin-units');
+const BitcoinUnit = require('bitcoin-units');
 ```
 
 ### Converting bitcoin
 
 Basic unit conversions are done using the `to(unit)` function:
+
 ```js
-bitcoin(1, 'mBTC').to('BTC').value()
-0.001
+new BitcoinUnit(1, 'mBTC').to('BTC').getValue();
+// 0.001;
 ```
 
 #### Available units
@@ -60,59 +66,63 @@ There are 4 available units by default:
 
 You can also use any of the following aliases:
 
-- `btc`: `bitcoin` or `bitcoins`
+- `btc`: `bitcoin`or `bitcoins`
 
 - `mbtc`: `millibtc`
 
-- `bit`: `μbtc` or `microbtc`
+- `bit`: `microbtc`
 
-- `satoshi`: `sat`, `sats`, `satoshi`, `satoshis`
-
-
+- `sats`: `sat`, `satoshi`, `satoshis`
 
 #### Available getters
 
-`value()` returns a `Number`:
+`getValue()` returns a `Number`:
+
 ```js
-bitcoin(1, 'mBTC').to('BTC').value()
-0.001
+new BitcoinUnit(1, 'mBTC').to('BTC').value();
+// 0.001;
 ```
 
 `toString()` returns a `string`:
+
 ```js
-bitcoin(100000, 'satoshi').to('BTC').toString()
-'0.001'
+new BitcoinUnit(100000, 'satoshi').to('BTC').toString();
+// '0.001';
 ```
 
 `format()` returns a string with the value and unit:
+
 ```js
-bitcoin(100000, 'satoshi').to('BTC').format()
-'0.001 BTC'
+new BitcoinUnit(100000, 'satoshi').to('BTC').format();
+// '0.00100000 BTC';
 ```
 
 ### Customization
 
 #### Custom Format
-You can set your own custom formats using the `bitcoin.setDisplay(unit, options)`:
+
+You can set your own custom formats using the `BitcoinUnit.setDisplay(unit, options)`:
 
 ```js
-bitcoin.setDisplay('satoshi', {
-  format: '{amount} sats'
+BitcoinUnit.setDisplay('sats', {
+  format: '{amount} something',
 });
 
-bitcoin(1, 'BTC').to('satoshi').format();
+new BitcoinUnit(1, 'BTC').to('satoshi').format();
 
-'100,000,000 sats'
+// '100,000,000 something';
 ```
 
 #### Custom Unit
+
 If you want to create your own custom units, you can use the `bitcoin.setUnit(unit, value)`:
+
 ```js
-bitcoin.setUnit('custom', 1 / 1E2);
+BitcoinUnit.setUnit('custom', 1 / 1e2);
 
-bitcoin(1, 'btc').to('custom').value();
+new BitcoinUnit(1, 'btc').to('custom').value();
 
-100
+// 100;
 ```
 
 You can use this to create your own conversion to fiat currencies:
@@ -120,26 +130,27 @@ You can use this to create your own conversion to fiat currencies:
 ```js
 // Let's suppose a rate of 1 BTC = $8000.00
 
-bitcoin.setUnit('usd', 1 / 8000);
+BitcoinUnit.setUnit('usd', 1 / 8000);
 
-bitcoin(1, 'satoshi').to('usd').value();
+new BitcoinUnit(1, 'satoshi').to('usd').value();
 
-0.00008
+// 0.00008;
 ```
 
 There's a shorthand to this function named `bitcoin.setFiat(unit, rate)`:
+
 ```js
-bitcoin.setFiat('usd', 8000);
+BitcoinUnit.setFiat('usd', 8000);
 
-bitcoin(1, 'satoshi').to('usd').value();
+new BitcoinUnit(1, 'satoshi').to('usd').value();
 
-0.00008
+// 0.00008;
 ```
 
 ## Author
 
 Rui Gomes  
-https://ruigomes.me  
+https://ruigomes.me
 
 ## License
 

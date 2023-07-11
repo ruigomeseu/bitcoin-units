@@ -1,7 +1,8 @@
 language: node_js
 node_js:
-  - '8'
-  - '6'
+  - 18
+  - lts/* # safety net; don't remove
+  - node # safety net; don't remove
 script:
   - npm run build
   - npm run test
