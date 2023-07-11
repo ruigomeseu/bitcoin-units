@@ -1,11 +1,11 @@
-import BitcoinUnitType from '../src/index';
+import { BitcoinUnit as BitcoinUnitType } from '../src/index';
 
 let BitcoinUnit: typeof BitcoinUnitType;
 
 describe('Converting units', () => {
   beforeEach(() => {
     return import('../src/index').then((module) => {
-      BitcoinUnit = module.default;
+      BitcoinUnit = module.BitcoinUnit;
       jest.resetModules();
     });
   });

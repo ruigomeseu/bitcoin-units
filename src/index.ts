@@ -1,7 +1,8 @@
 import Big from 'big.js';
-import { Unit, getUnit, addUnit, DisplayFormat, setDisplay } from './units';
+import { getUnit, addUnit, setDisplay } from './units';
+import type { Unit, DisplayFormat } from './units';
 
-export default class BitcoinUnit {
+class BitcoinUnit {
   protected value: Big;
   protected unit: Unit;
 
@@ -75,3 +76,5 @@ export default class BitcoinUnit {
     return BitcoinUnit.addUnit(currency, 1 / rate, display);
   }
 }
+
+export { BitcoinUnit, Unit, DisplayFormat, addUnit, setDisplay, getUnit };

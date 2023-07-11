@@ -4,13 +4,12 @@
   "description": "Convert between BTC, mBTC, μBTC, satoshis and custom units.",
   "homepage": "https://github.com/ruigomeseu/bitcoin-units",
   "bugs": "https://github.com/ruigomeseu/bitcoin-units/issues",
-  "type": "module",
-  "main": "./build/bitcoin-units.cjs.js",
-  "module": "./build/bitcoin-units.esm.js",
-  "browser": "./build/bitcoin-units.umd.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "yarn run build && jest",
-    "build": "rimraf build && rollup -c --bundleConfigAsCjs",
+    "build": "tsup ./src",
     "cover": "istanbul cover _mocha -- --recursive",
     "lint": "eslint src tests --ext .ts"
   },
@@ -33,10 +32,7 @@
     "url": "https://github.com/ruigomeseu/bitcoin-units"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.2",
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "@rollup/plugin-terser": "^0.4.3",
-    "@rollup/plugin-typescript": "^11.1.1",
+    "@swc/core": "^1.3.68",
     "@types/big.js": "^6.1.6",
     "@types/jest": "^29.5.2",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
@@ -45,9 +41,9 @@
     "jest": "^29.5.0",
     "prettier": "^3.0.0",
     "rimraf": "^5.0.1",
-    "rollup": "^3.25.1",
     "ts-jest": "^29.1.0",
     "tslib": "^2.5.3",
+    "tsup": "^7.1.0",
     "typescript": "^5.1.3"
   },
   "dependencies": {
