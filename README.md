@@ -41,13 +41,13 @@ npm install bitcoin-units --save
 Import using ESM:
 
 ```js
-import BitcoinUnit from 'bitcoin-units';
+import { BitcoinUnit } from 'bitcoin-units';
 ```
 
 Or CJS:
 
 ```js
-const BitcoinUnit = require('bitcoin-units');
+const { BitcoinUnit } = require('bitcoin-units');
 ```
 
 ### Converting bitcoin
